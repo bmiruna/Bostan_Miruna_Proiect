@@ -1,0 +1,61 @@
+﻿@page "/"
+@model Bostan_Miruna_Proiect.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container">
+    <h1 class="title">Products</h1>
+    <hr>
+    <div class="row">
+        @foreach (var item in Model.ProductD.Products)
+        {
+            
+            <div class="col-6 col-md-4" style="margin-bottom: 10px; margin-top: 10px;">
+                <div>
+                    <img src="~/images/@Html.DisplayFor(modelItem => item.Image)" />
+                </div>
+                <div>
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                </div>
+                <div>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </div>
+                <div>
+                    <strong>@Html.DisplayNameFor(model => model.Product[0].Price): </strong>
+                    <span>@Html.DisplayFor(modelItem => item.Price) Lei</span>
+                </div>
+                <div>
+                    <strong>@Html.DisplayNameFor(model => model.Product[0].PublishingDate): </strong>
+                    <span>@Html.DisplayFor(modelItem => item.PublishingDate)</span>
+                </div>
+                <div>
+                    <strong>@Html.DisplayNameFor(model => model.Product[0].Make): </strong>
+                    <span>@Html.DisplayFor(modelItem => item.Make.MakeName)</span>
+                </div>
+                <div>
+                    <strong>@Html.DisplayNameFor(model => model.Product[0].ProductCategories): </strong>
+                    @foreach (var category in item.ProductCategories)
+                    {
+                        @: <span style="border: 1px solid #8b5fcc; margin-right: 7px; padding: 3px;">
+                            @category.Category.CategoryName
+                        @:</span>
+                    }
+
+                </div>
+                <br />
+                <br />
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </div>
+        }
+    </div>
+</div>
+<br />
+<br />
+<br />
+<p>
+    <a asp-page="Create" class="btn btn-primary" style="background-color: #8b5fcc;">Add New Product</a>
+</p>

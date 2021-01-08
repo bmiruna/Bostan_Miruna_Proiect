@@ -1,0 +1,35 @@
+﻿@page
+@model Bostan_Miruna_Proiect.Pages.Products.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<hr>
+<br />
+<br />
+<div class="container">
+<div class="card">
+        <div class="container-fliud">
+            <div class="wrapper row">
+                <div class="preview col-md-6">
+                    <div class="preview-pic tab-content">
+                        <div class="tab-pane active detail-img" id="pic-1"> <img src="~/images/@Html.DisplayFor(model => model.Product.Image)"></div>
+                    </div>
+                </div>
+                <div class="details col-md-6">
+                    <h3>@Html.DisplayNameFor(model => model.Product.Name): @Html.DisplayFor(model => model.Product.Name)</h3>
+
+                    <p>@Html.DisplayNameFor(model => model.Product.Description): @Html.DisplayFor(model => model.Product.Description)</p>
+                    <p><span>@Html.DisplayNameFor(model => model.Product.Price): @Html.DisplayFor(model => model.Product.Price) Lei</span></p>
+                    <p>@Html.DisplayNameFor(model => model.Product.PublishingDate): @Html.DisplayFor(model => model.Product.PublishingDate)</p>
+                    <div>
+                        <a asp-page="./Edit" asp-route-id="@Model.Product.ID">Edit</a> |
+                        <a asp-page="./Index">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
